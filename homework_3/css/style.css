@@ -1,0 +1,60 @@
+
+
+      body{
+  box-sizing: border-box;
+  padding: 10px 20px 30px;
+  background: #eee;
+  font-family: sans-serif;
+}
+
+.wrap{
+  margin: 10px 20px;
+  background: #eee;
+  padding: 10px 20px 30px;
+}
+
+header
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mySlider
+{
+  background: white;
+  border: 3px solid black;
+  box-shadow: 0px 0px 10px black;
+  width: 700px;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+.Slide
+{
+    border:50px solid black;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    cursor:pointer;
+    transition: 0.3s;
+}
+
+.Slide:hover
+{
+  opacity: 0.8;
+}
+
+
+.NextSlide
+{
+  border-left-color: black;
+    border-right-color: transparent;
+}
+
+
+
+.PrevSlide
+{
+  border-right-color: black;
+    border-left-color: transparent;
+}
