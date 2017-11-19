@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<meta charset="utf-8">
+<title>Lab 1</title>
+<script>
+
+// Change color body;
+function getRandomInt_1()
+{
+	return Math.floor(Math.random() * (255 - 0)+0);
+}
+function getRandomInt_2()
+{
+	return Math.floor(Math.random() * (255 - 0)+0);
+}
+function Change()
+{
+	var parrent = document.getElementById("parrent");
+  var child = document.createElement("h1");
+  parrent.appendChild(child, parrent[0]);
+	setInterval(function() {var a = getRandomInt_1(),b = getRandomInt_1(), c = getRandomInt_1();
+	 document.body.style.background = `rgba(${a},${b},${c},1)`;
+	child.innerHTML = "#"+a+"."+b+"."+c;}, 500);
+  child.style.fontSize = "100px";
+  child.style.fontFamily = "impact";
+  child.style.marginTop = "250px";
+  child.style.textShadow = "0px 0px 15px black";
+  
+  setInterval(function(){
+  	var a_2 = getRandomInt_2(),b_2 = getRandomInt_2(), c_2 = getRandomInt_2();
+  	child.style.color = `rgba(${a_2},${b_2},${c_2},1)`;}, 100);
+}
+
+
+</script>
+
+</HEAD>
+
+<body onload="Change()">
+
+<center><div id = "parrent"> </div></center>
+</body>
+
+</HTML>
