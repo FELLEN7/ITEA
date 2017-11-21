@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <link href="style_4.css" rel="stylesheet" />
+</head>
+<body>
+	<center>
+      <div id="app">
+        <div>
+          <input id="mainInput" size="45" placeholder="Введите текст сюда"/>
+          <div id="mainInputCount"></div>
+        </div>
+
+        <div>
+          <button id="unlock" disabled>Разблокировать и очистить</button>
+          <button id="save" type="submit">Сохранить данные</button>
+        </div>
+
+      </div>
+  </center>
+      <script>
+        var InputText = document.getElementById("mainInput");
+        var ShowCountSymbols = document.getElementById('mainInputCount');
+        var Save = document.getElementById("save");
+        var UnlockAll = document.getElementById("unlock");
+        ShowCountSymbols.innerHTML = "NumberSymbols: " + 0;
+        InputText.addEventListener("keyup",CheckLengthOnline,false);
+        Save.addEventListener("click",Valid,false);//Отправка в консоль
+        
+        function CheckLengthOnline()
+        {
+        	InputText.classList.remove("valid");
+        	InputText.classList.remove("ok");
+        	var Length = document.getElementById("mainInput").value.length;
+            ShowCountSymbols.innerHTML = "NumberSymbols: " + Length;
+            if(Length > 40)
+            {
+              InputText.setAttribute("disabled","disabled");
+            }
+            else if(Length > 30)
+            {
+               Save.setAttribute("disabled","disabled");
+               InputText.classList.add("error");
+               UnlockAll.addEventListener("click", UnlockInput, false);
+               UnlockAll.removeAttribute("disabled","disabled");
+            }
+            else
+            {
+            	Save.removeAttribute("disabled");
+            	InputText.classList.remove("error");
+            }
+        }
+ 		function Valid() 
+ 		{
+ 			InputText.classList.add("valid");
+ 			console.log(InputText.value);
+ 		}
+
+ 		function UnlockInput() 
+ 		{
+ 			InputText.value = "";
+ 			InputText.removeAttribute("disabled","disabled");
+ 			UnlockAll.removeEventListener("click", UnlockInput, false);
+ 			UnlockAll.setAttribute("disabled","disabled");
+ 		}
+
+      </script>
+</body>
+</html>
