@@ -48,9 +48,18 @@
             }
             else
             {
+            	if(Length > 0)
+            	{
             	Save.removeAttribute("disabled");
+                }
+                else
+                {
+                Save.setAttribute("disabled","disabled");
+                Save.removeEventListener("click",Valid,false);
+                }
             	InputText.classList.remove("error");
             }
+
         }
  		function Valid() 
  		{
