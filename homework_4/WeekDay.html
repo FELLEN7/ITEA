@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>asdas</title>
+
+  </head>
+  <body>
+    <center>
+    <input type="date" id="date"/>
+    <div id ="Output">День недели - не выбран</div>
+</center>
+
+    <script>
+
+    var AllDate = document.getElementById("date");
+    var Out = document.getElementById('Output');
+    var Days = ["Понедельник","Вторник","Среда","Четверг","Пятница"];
+    AllDate.onchange =  function()
+    {
+      var ourDate = new Date(AllDate.value);
+      var CurrentDay = ourDate.getDay();
+      Out.innerHTML = "День недели - " + Days[CurrentDay-1];
+    }
+
+    </script>
+  </body>
+
+
+</html>

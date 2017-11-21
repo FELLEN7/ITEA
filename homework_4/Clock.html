@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>asdas</title>
+
+  </head>
+  <body>
+<style>
+input[type="button"]
+{
+   border-radius: 5px;
+   margin: 5px;
+   padding: 2px;
+   background-color: black;
+   opacity: 0.6;
+   color:white;
+}
+input[type="button"]:hover
+{
+  opacity: 1;
+  cursor:pointer;
+}
+</style>
+
+    <center>
+    
+    <input type="button" value="stop" id="stop"/>
+     <input type="button" value="start" id="start"/>
+     <input type="button" value="reset" id="reset"/>
+     <input type="button" value="reverse" id="reverse"/>
+     <div style="margin-top:10px; display: flex;background-color: black; opacity: 0.6; width:150px; height: 150px; align-items: center; justify-content: center; border-radius: 50%; border:3px solid white; box-shadow: 0px 0px 10px black; color:white; text-shadow: 0px 0px 15px black;">
+      <div id="first" style="position: absolute; padding-bottom: 110px;"></div>
+     <h2><div id="arrow"> >>===></div></h2>
+    </div>
+  </center>
+
+    <script>
+     var counter = 0;
+     var first = document.getElementById('first');
+     var stop = document.getElementById("stop");
+     var start = document.getElementById("start");
+     var reset = document.getElementById("reset");
+     var reverse = document.getElementById("reverse");
+     var arrow = document.getElementById("arrow");
+     var test = 0;
+     var typeTimer = true;
+     first.innerHTML = counter;
+     var arrow = document.getElementById("arrow");
+     var rotate = 270;
+     var Timer = setInterval(Counter, 1000);
+     arrow.style.transform = "rotate("+rotate+"deg)";
+  
+       function getRandomInt_1()
+      {
+        return Math.floor(Math.random() * (255 - 0)+0);
+      }
+      function getRandomInt_2()
+      {
+        return Math.floor(Math.random() * (255 - 0)+0);
+      }
+
+     
+
+     function Counter() 
+     {  
+        var a1 = getRandomInt_1();
+        var b1 =getRandomInt_1();
+        var c1 = getRandomInt_1();
+        var a2 = getRandomInt_2();
+        var b2 =getRandomInt_2();
+        var c2 = getRandomInt_2();
+
+      if(typeTimer == true){
+       test = 1;
+        counter++;
+        first.innerHTML = counter;
+        document.body.style.background = `rgba(${a1},${b1},${c1},1)`;
+        arrow.style.color = `rgba(${a2},${b2},${c2},1)`;
+         rotate+=6;
+         arrow.style.transform = "rotate("+rotate+"deg)";
+
+      }
+      else if(typeTimer == false)
+      {
+        test = 1;
+        if(counter <= 0)
+        {
+          clearInterval(Timer);
+          test = 0;
+        }
+        first.innerHTML =  counter;
+        document.body.style.background = `rgba(${a1},${b1},${c1},1)`;
+        arrow.style.color = `rgba(${a2},${b2},${c2},1)`;
+         rotate-=6;
+         arrow.style.transform = "rotate("+rotate+"deg)";
+        counter--;
+      }
+
+      }
+
+      reset.onclick = function () {
+       counter = 0;
+       first.innerHTML = counter;
+       rotate = 270;
+       arrow.style.transform = "rotate("+rotate+"deg)";
+     }
+       
+      reverse.onclick = function () {
+        test = 1;
+        if(typeTimer == true){
+         typeTimer = false;
+        }
+        else typeTimer = true;
+      }
+
+      stop.onclick = function () {
+        if(test == 1){
+        clearInterval(Timer);
+        test = 0;
+      }
+      }
+
+      start.onclick= function () {
+        if((typeTimer != false)&&(counter!=0)){
+        if(test == 0)
+        {
+        setInterval(Counter, 1000);
+        test = 1;
+        }
+    }
+      }
+
+    </script>
+  </body>
+
+
+</html>
