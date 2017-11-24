@@ -69,6 +69,7 @@
 
  		function UnlockInput() 
  		{
+      InputText.classList.remove("error");
  			InputText.value = "";
  			InputText.removeAttribute("disabled","disabled");
  			UnlockAll.removeEventListener("click", UnlockInput, false);
