@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Form work1</title>
+  
+</head>
+<body>
+  <div class="Templating" >
+    <header style="display:flex; justify-content:center;">
+      <div><label>Width</label><br/><input type="range" id="myWidth" min="10" max="1000" step="10"/></div>
+      <div><label>Height</label><br/><input type="number" id="height"/></div>
+      <div><label>Color</label><br/><input type="button" value="select" id="ShowColor"/></div>
+      
+      <div><label>Radius</label><br/><input type="number" id="radius"/></div>
+      <div><label>Padding</label><br/><input type="number" id="padding"/></div>
+    </header>
+</div>
+
+    <div id="Block"></div>
+    <div id="colors"></div>
+<script>
+    /*
+      Задание:
+        Сделать шиблонизатор элемента по:
+        Ширине input type=range
+        Цвету  input type=color
+        Высоте input type=number
+        Скругление углов input type=number
+        Внутрение отступы input type=number
+
+      Свойсвта: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference
+
+      Бонус:
+        + Сделать выборку цвета из статичных цветов которые выбираются из появившегося блока :
+        https://s3.envato.com/files/230412754/screenshots/1.png
+
+
+    */
+    var ButtonShowColor = document.getElementById("ShowColor");
+    var BlockColor = document.getElementById("colors");
+    var MyWidth = document.getElementById("myWidth");
+    MyWidth.value = 0;
+   	var MyHeight = document.getElementById("height");
+   	MyHeight.value = 10;
+   	var MyBlock = document.getElementById("Block");
+   	var MyRadius = document.getElementById("radius");
+   	var MyPadding = document.getElementById("padding");
+
+
+    window.addEventListener("load", function () {
+    			MyWidth.addEventListener("input",function(){
+    				MyBlock.style.width = MyWidth.value + "px";});
+    			MyHeight.addEventListener("input",function() {
+	    			MyBlock.style.height = MyHeight.value + "px";});
+    			MyRadius.addEventListener("input",function() {
+    				MyBlock.style.borderRadius = MyRadius.value + "px";});
+    			MyPadding.addEventListener("input",function() {
+    				MyBlock.style.padding = MyPadding.value + "px";});
+    			ButtonShowColor.addEventListener("click",ShowColors);
+
+    for(var i=0;i<10;i++) add();	//Создание блоков с цветами
+    });
+
+    function ShowColors() 
+	{
+    	if(BlockColor.style.visibility == "visible")
+        BlockColor.style.visibility = "hidden";
+    	else
+ 		BlockColor.style.visibility = "visible";
+    }
+
+    function ChangeColor()
+    {
+    	var Circles = document.getElementsByClassName("circle");
+    	for(var i=0;i<Circles.length;i++)
+    	{
+    		var a = getRandomInt();
+        	var b = getRandomInt();
+			var c = getRandomInt();
+    		Circles[i].style.backgroundColor = `rgba(${a},${b},${c},1)`;
+    	}
+    }
+
+  	function getRandomInt()
+    {
+        return Math.floor(Math.random() * (255 - 0)+0);
+    }
+
+  	function add()
+  	{
+        	var parent = document.getElementById("colors");
+        	var child = document.createElement("div");
+        	child.classList.add("circle");
+        	child.setAttribute("onclick","SelectedColor(this)");
+        	child.style.cursor = "pointer";
+        	parent.appendChild(child);
+          ChangeColor();
+    }
+
+    function SelectedColor(e)
+    {
+    	var Circles = document.getElementsByClassName("circle");
+    	for(var i=0;i<Circles.length;i++)
+    	{
+    	Circles[i].style.backgroundImage = "none";
+		}
+    	e.style.backgroundImage = "url('img/selected.png')";
+    	MyBlock.style.backgroundColor = e.style.backgroundColor;
+    }
+
+
+
+
+      
+  </script>
+
+
+  <style>
+
+  .Templating
+  {
+  	display:flex;
+  	justify-content: center;
+  }
+
+  .circle
+  {
+  	border:1px solid black;
+  	width:50px;
+  	height:50px;
+  	border-radius: 50%;
+  	visibility: inherit;
+  	background-size: contain;
+  }
+
+  .circle:hover
+  {
+    opacity: 0.5;
+  }
+
+  #colors
+  {
+  	visibility: hidden;
+  	margin:0 auto;
+  	margin-top:10px;
+  	border-radius: 20px;
+  	background-color: #323232;
+  	width:800px;
+  	height:100px;
+  	display:flex;
+    justify-content: center;
+ 	align-items: center;
+    }
+
+    div
+    {
+    	margin-left:20px;
+    }
+
+    #Block
+    {
+    	margin:0 auto ;
+    	margin-top:10px;
+    	border:1px solid black;
+    	width:10px;
+    	height:10px;
+    }
+  </style>
+</body>
+</html>
