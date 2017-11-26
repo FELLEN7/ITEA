@@ -92,7 +92,7 @@
         	var parent = document.getElementById("colors");
         	var child = document.createElement("div");
         	child.classList.add("circle");
-        	child.setAttribute("onclick","SelectedColor(this)");
+        	child.addEventListener("click", SelectedColor);
         	child.style.cursor = "pointer";
         	parent.appendChild(child);
           ChangeColor();
@@ -105,8 +105,8 @@
     	{
     	Circles[i].style.backgroundImage = "none";
 		}
-    	e.style.backgroundImage = "url('img/selected.png')";
-    	MyBlock.style.backgroundColor = e.style.backgroundColor;
+    	e.target.style.backgroundImage = "url('img/selected.png')";
+    	MyBlock.style.backgroundColor = e.target.style.backgroundColor;
     }
 
 
