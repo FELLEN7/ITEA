@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>asdas</title>
+
+  </head>
+  <body>
+    
+
+
+
+
+    <script>
+    
+
+    var Train = {
+    	name:"tootoo",
+    	speed: 300,
+    	number_people: 20,
+    	go: function () {
+    		console.log("Поезд "+ this.name +" везет " + this.number_people + "пассажиров со скоростью" + this.speed );
+    	},
+    	stop: function(){
+    		console.log("Поезд " + this.name +" остановился");
+    	}
+    }
+
+    Train.go();
+    Train.stop();
+
+    function Dog(name, type)
+    {
+    	this.name = name;
+    	this.type = type;
+
+    	 this.showInfo = function() {
+                document.write(this.name + " " + this.type + "<br />");
+            }
+    	this.props = function () {
+          for(var key in this)
+          {
+          	console.log(this[key]);
+          }
+    	}
+    }
+
+
+
+
+    var MyDog = new Dog("Skuby", "big");
+    MyDog.showInfo();
+
+    var MyTwoDog = new Dog("jeck", "little");
+    MyTwoDog.showInfo();
+
+    MyTwoDog.props();
+
+
+
+
+
+
+
+    function show()
+    {
+    	console.log(this.name);
+    }
+
+    function Dog(name)
+    {
+    	this.name = name,
+    	this.show = show
+    }
+
+
+    function Cat(name)
+    {
+    	this.name = name
+    }
+    	
+    var Bobik = new Dog("Bobik");
+    var Timka = new Cat("Timka");
+
+    Object.setPrototypeOf(Timka, Bobik);
+
+    Timka.show();
+    Bobik.show();
+
+
+
+    </script>
+  </body>
+  
+
+
+</html>
