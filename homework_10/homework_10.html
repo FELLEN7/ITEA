@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>asdas</title>
+
+  </head>
+  <body>
+    <!--<button id="button">Start</button>-->
+    <center>
+    <div id="login">
+    <input type="text" size="15" placeholder="name" id="name"/><br/>
+    <input type="password" size="15" placeholder="password" id="password"/>
+    <button id="send">Send</button>
+    </div>
+    <button id="reset">reset</button>
+    </center>
+
+
+    <script>
+
+var reset = document.getElementById("reset");
+var button_send = document.getElementById("send");
+var login_form = document.getElementById("login");
+button_send.addEventListener("click", Send_Data);
+reset.addEventListener("click",Reset);
+
+function Reset()
+{
+    localStorage.removeItem("obj");
+}
+
+if(localStorage.getItem("obj"))
+{
+    var obj = localStorage.getItem("obj");
+obj = JSON.parse(obj);
+document.write("hello " + obj.user_name);
+login_form.style.visibility = "hidden";
+}
+else
+{
+    login_form.style.visibility = "visible";
+}
+
+function Send_Data(){
+var name = document.getElementById("name").value;
+var password = document.getElementById("password").value;
+if(name == 0)
+{
+    return false;
+}
+else if(password==0)
+{
+    return  false;
+}
+var obj = {
+    user_name: name,
+    user_password: password
+}
+obj = JSON.stringify(obj);
+localStorage.setItem("obj", obj);
+
+}
+
+    
+ /*   1.  \b\w+\b
+    2.   a.+?e
+    3.  \d{4}
+    4.  \[\w+\]
+    5.  .jpg
+    6.  \b(\w+)@(\w+\.)(\w+)\b
+    7.   [A-Z]\w+
+*/
+    
+        //  document.body.style.backgroundColor = localStorage.getItem("Color");
+        //      function getRandomInt()
+        //   {
+        //     return Math.floor(Math.random() * (255 - 0)+0);
+        //   }
+
+        // function Color()
+        //     {
+
+        //         var a = getRandomInt();
+        //          var b = getRandomInt();
+        //          var c = getRandomInt();
+        //         var color = `rgba(${a},${b},${c},1)`;
+        //         document.body.style.backgroundColor = color;
+        //        localStorage.setItem("Color", color);
+        //     }
+
+        // function Start()
+        // {
+        //     setInterval(Color, 1000);
+        // }
+        // var a = document.getElementById('button');
+        // a.addEventListener("click", Start);
+
+
+
+    </script>
+  </body>
+  
+
+
+</html>
+
