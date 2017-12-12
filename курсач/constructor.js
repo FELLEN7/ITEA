@@ -11,7 +11,7 @@ var button_send_post = document.getElementById("SendPost");
 //patterns
 var author_pattern = /[A-Z]+[a-z]{3,20}/;
 var text_pattern = /[a-z_ -A-Z]{3,4000}/;
-var link_pattern = / /;
+var link_pattern = /(http|https):\/\/[a-z_\/\.\-0-9]+\.\w+/g;
 
 button_send_post.addEventListener("click", Constructor);
 link.addEventListener("input", PreviewImage);
@@ -21,7 +21,15 @@ button_send_post.addEventListener("click", MakePost);
 
 function PreviewImage()
 {
-  preview.setAttribute("src", link.value);
+  if(link_pattern.test(link.value) == false)
+  {
+    link.style.border = "1px solid red";
+  }
+  else
+  {
+    preview.setAttribute("src", link.value);
+    link.style.border = "0px";
+  }
 }
 
 function CountLikes(e)
@@ -121,6 +129,7 @@ function MakePost()
   var post = new Constructor(author.value, text.value, link.value);
   post.addPost();
   ClearConstructor();
+  link.style.border = "0px";
 }
 
 function SendComment(e)
