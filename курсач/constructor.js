@@ -294,9 +294,18 @@ post.appendChild(img);
 post.appendChild(control);
 post.appendChild(box_comments);
 post.appendChild(constructor_comments);
-  this.addPost = function()  
-    {
+
+this.addPost = function()  
+{
+  if(post_box.childNodes[0])
+  {
+  var mass_posts = document.getElementsByClassName("post")[0];
+  post_box.insertBefore(post, mass_posts);
+  }
+  else
+  {
       post_box.appendChild(post);
-    }
+  }
+}
 return this;
 }
