@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>homework_9</title>
+  </head>
+  <body>
+
+
+
+    <script type="text/javascript">
+
+
+      var newArr = [];
+      fetch("http://www.json-generator.com/api/json/get/bGLeIlIUwO?indent=2").then(
+      ( res ) => {
+        return res.json();
+      }, ( err ) => {
+        console.log("error");
+      }
+    ).then(
+      ( res ) => {
+        let x =[];
+        let y = [];
+
+        res.forEach((c) => {
+
+          fetch("http://www.json-generator.com/api/json/get/bTPJNrGAPm?indent=2").then(
+          ( res ) => {
+            return res.json();
+          }).then(
+            ( res ) => {
+              res.forEach((c) => {
+              y.push({name : c.name});
+              })
+              }
+
+          )
+          x.push({
+            name: c.name,
+            age: c.age,
+            index: c.index,
+            friends: y
+          });
+
+        });
+        console.log(x);
+      }
+     );
+    </script>
+  </body>
+</html>
+
+    </script>
+  </body>
+  
+
+
+</html>

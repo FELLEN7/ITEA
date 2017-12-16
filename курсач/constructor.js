@@ -1,6 +1,5 @@
 
 
-
 var post_box = document.getElementById("PostBox");
 
 var author = document.getElementById("author");
@@ -9,7 +8,7 @@ var link = document.getElementById("link");
 var preview = document.getElementById("preview");
 var button_send_post = document.getElementById("SendPost");
 //patterns
-var author_pattern = /[A-Z]+[a-z]{3,20}/;
+var author_pattern = /([A-Z]){1}([a-z]){3,20}/;
 var text_pattern = /[a-z_ -A-Z]{3,4000}/;
 var link_pattern = /(http|https):\/\/[a-z_\/\.\-0-9]+\.\w+/g;
 
