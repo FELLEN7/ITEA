@@ -18,18 +18,9 @@ button_send_post.addEventListener("click", MakePost);
 
 
 
-function PreviewImage()
-{
-  if(link_pattern.test(link.value) == false)
-  {
-    link.style.border = "1px solid red";
+function PreviewImage(){
+        preview.setAttribute("src", link.value);
   }
-  else
-  {
-    preview.setAttribute("src", link.value);
-    link.style.border = "0px";
-  }
-}
 
 function CountLikes(e)
 {
